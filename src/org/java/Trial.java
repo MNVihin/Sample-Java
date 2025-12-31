@@ -5,7 +5,12 @@ public class Trial {
 		String s="Java";
 		String s1="Program";
 		
+		String h = "Hey HEY hEY";
+		
 		String S = "Java from SampleA";
+
+		
+
 	}
 
 }
