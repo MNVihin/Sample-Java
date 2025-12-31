@@ -1,0 +1,42 @@
+What is DataDriven testing?
+
+In my project we are doing DataDriven testing with help of excel sheets using Apache Poi-ooxml dependency in pom.xml file.
+
+//In our project, we follow data-driven testing by storing test data in Excel (.xlsx) sheets. We use the Apache POI-OOXML dependency in the pom.xml to read the Excel data. The test scripts fetch input values from Excel and execute the same test logic for different data sets, which reduces hardcoding.
+
+What is POM?
+ 
+POM is a design pattern, we are using it in our project to maintain the locators separately in POJO class for each pages of our application.  For example we have separate class for login, for search product, we have separate class with the help of PageFactory. We are going for PageFactory concept to avoid the StaleElementReferenceExceptioin. The StaleElementReferenceExceptioin occurs when the DOM is refreshed, it will stale the old WebElement reference. if you are trying to use the same WebElement reference it will throw StaleElementReference Exception.
+
+With the help of POM PageFactory we can reinitialize the WebElementswith the help of initsElements method from webdriver when the constructor is called. Hence, we are avoiding the StaleElementReferenceException and lots of reworks can be avoided and better code maintenance and readability
+
+//POM is a design pattern, and in our project we use it to maintain locators separately in POJO classes for each page of the application. For example, we have separate page classes for login and search pages.
+
+we use PageFactory, and inside the constructor we call PageFactory.initElements(driver, this) to initialize all the web elements.
+
+A StaleElementReferenceException occurs when the DOM is refreshed and the existing WebElement reference becomes invalid. If we try to use that old reference, Selenium throws this exception.
+
+By using POM with PageFactory, WebElements are reinitialized through the constructor whenever the page is loaded, which helps us reduce stale element issues. This approach also improves code reusability, maintenance, and readability.
+
+
+Which framework you are using in your project?
+
+In my project, i am using TestNG Framework to maintain our automation test cases with help of annotations and testing xml file. Using TestNG, we are prioritizing our test cases and we pass parameters with help of TestNG xml file and we do soft assertion for our test cases and we are grouping to include or exclude the bulk test cases and we are running our test cases and we are grouping to include or exclude the bulk test cases and we are running our test case via parallel execution and executing the test in different browsers using cross browser testing and automatically we can rerun the failed testcases and it provides default HTML reports.
+
+//TestNG framework is being used in my project to maintain our automation test cases with help of annotations and testing.xml file. Using TestNG we are prioritizing our test cases and we can pass parameters, do both soft and Hard assertions. we can group the test cases and include or exclude them. We are running parallel execution and cross browser testing and we can automatically rerun the failed testcases and it can provide emailable HTML test reports.
+
+
+Can you explain how will you read Excel File?
+
+using apache poi ooxml dependency we used to read excel file.
+
+By declaring the path of the excel file using File class and to read the excel file by using the FileInputStream class and open the Workbook using XSSFWorkbook and getting the rows using getRow method and getting the cells using getCell method, then getting the type of cell using getCellType method, if the cellType is equal to 1 means the if condition will execute and getting the getStringCellValue and if the cell Type is not equal to 1, the else if condition with Dateutil.is CellDateFormatted means the else if condition will execute getting the Date Cell Value using getDateCellValue then converting DateCell to String Cell using SimpleDateFormat class with format method.
+
+If both if condition are not satisfied then the else block will execute to get NumericCellValue with getNumericCellValue and it returns value in double format. we convert double value to long format and long format to string using String.valueOIf() method.
+
+//In our project, we use the Apache POI-OOXML dependency to read data from Excel files. First, we declare the Excel file path using the File class and read it using FileInputStream. Then we open the workbook using XSSFWorkbook.
+
+From the workbook, we get rows using getRow() and cells using getCell(). We check the cell type using getCellType(). If the cell contains a string, we read it using getStringCellValue(). If it is a date, we check using DateUtil.isCellDateFormatted() and convert the date to string using SimpleDateFormat. If it is a numeric value, we read it using getNumericCellValue(), convert it from double to long, and then to string using String.valueOf().
+
+This way, we handle all types of data from Excel in a simple and reusable manner.
+ 

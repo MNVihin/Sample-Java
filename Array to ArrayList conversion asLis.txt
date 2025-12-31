@@ -1,0 +1,85 @@
+*Array to ArrayList conversion asList
+*Real time use of interface as automation tester 
+*Real time use of inheritance as automation tester 
+*Multithredding 
+*Inheritance syntax, y are we using interface
+*Single dimensional array and two dimensional array 
+*String, String buffer, string builder 
+*Final, finally, finalize
+*Rea life use of map
+*Runtime and compile time exception 
+*Null pointer exception 
+*System.in, System.out, System.error
+*Diff between for and for each loop
+*Types of constructor
+*Private constructor
+*Copy constructor 
+*Print, println, printf
+*Iterator
+*Operators
+*can we overload main method
+*can we override main method
+*if we exchange the words in main method will the main method work?
+*
+
+*int a=5;
+int b=6;
+sysout(a==(b==5));
+-----------------------------------------
+*int x=5;
+sysout(++x + x++ + x):
+-----------------------------------------
+*Output?
+System.out.println(1 + 2 + "3" + 4 + 5);
+-----------------------------------------
+*String s1 = "abc";
+String s2 = "ab" + "c";
+System.out.println(s1 == s2);
+-----------------------------------------
+*String s1 = "ab";
+String s2 = "c";
+String s3 = s1 + s2;
+System.out.println(s3 == "abc");
+-----------------------------------------
+
+*int[] a = new int[0];
+System.out.println(a.length);
+-----------------------------------------
+
+*for(int i = 0; i < 3; i++);
+{
+    System.out.println("Hello");
+}
+-----------------------------------------
+*int a = 10;               
+System.out.println(a == a++);
+-----------------------------------------
+*int[] arr;
+arr = {1,2,3};
+-----------------------------------------
+*System.out.println("Java" == "Java");
+-----------------------------------------
+*String s1 = "Java";
+String s2 = new String("Java");
+System.out.println(s1 == s2);
+-----------------------------------------
+*String s = "abc";
+s.toUpperCase();
+
+is it possible?
+System.out.println(s);
+-----------------------------------------
+*boolean b = false;
+if(b = true)
+    System.out.println("YES");
+else
+    System.out.println("NO");
+-----------------------------------------
+
+*System.out.println((1 + 2) + (3 + 4) + "");  10
+-----------------------------------------
+*System.out.println("" + (1 + 2) + (3 + 4)); 37
+-----------------------------------------
+*String s = null;
+System.out.println(s + 10);
+-----------------------------------------

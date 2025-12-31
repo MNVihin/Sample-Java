@@ -1,0 +1,296 @@
+package org.baseclass;
+
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.IOException;
+import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class BaseClass {
+	public static WebDriver driver;
+
+	// Launch Browser
+	public static void launchChrome() {
+		driver = new ChromeDriver();
+		driver.manage().window().maximize();
+
+	}
+
+	public static void launchFirefox() {
+		driver = new FirefoxDriver();
+		driver.manage().window().maximize();
+	}
+
+	public static void launchEdge() {
+		driver = new EdgeDriver();
+		driver.manage().window().maximize();
+	}
+
+	public static void launchInternetExplorer() {
+		driver = new InternetExplorerDriver();
+		driver.manage().window().maximize();
+	}
+
+    //Launch Url
+	public static void launchurl(String url) {
+		driver.get(url);
+	}
+	
+	//sendKeys
+	public static void sendKeys(WebElement ele, String val) {
+		ele.sendKeys(val);
+	}
+	
+	//Click
+	public static void click(WebElement ele) {
+		ele.click();
+	}
+	
+	//Alert
+	public static void accptAlert() {
+		driver.switchTo().alert().accept();
+
+	}
+
+	public static void dismissAlert() {
+		driver.switchTo().alert().dismiss();
+
+	}
+
+	public static void sendKeysAlert(String val) {
+		driver.switchTo().alert().sendKeys(val);
+
+	}
+
+	public static void getTextAlert() {
+		String text = driver.switchTo().alert().getText();
+		System.out.println(text);
+
+	}
+	
+	//Actions class
+	public static void moveTo(WebElement val) {
+		Actions act = new Actions(driver);
+		act.moveToElement(val).perform();
+		
+	}
+
+	public static void doubleClick(WebElement val) {
+		Actions act = new Actions(driver);
+		act.doubleClick(val).perform();
+
+	}
+
+	public static void rightClick(WebElement val) {
+		Actions act = new Actions(driver);
+		act.contextClick(val).perform();
+		
+	}
+
+	public static void dragAndDrop(WebElement drag, WebElement drop) {
+		Actions act = new Actions(driver);
+		act.dragAndDrop(drag, drop).perform();
+
+	}
+	
+	//Robot class
+	public static void Enter() throws AWTException {
+		Robot r = new Robot();
+		r.keyPress(KeyEvent.VK_ENTER);
+		r.keyRelease(KeyEvent.VK_ENTER);
+
+	}
+
+	public static void Tab() throws AWTException {
+		Robot r = new Robot();
+		r.keyPress(KeyEvent.VK_TAB);
+		r.keyRelease(KeyEvent.VK_TAB);
+
+	}
+
+	//JavascriptExecutor
+	public static void screemshot(String name) throws IOException {
+		TakesScreenshot ts = (TakesScreenshot) driver;
+		File temp = ts.getScreenshotAs(OutputType.FILE);
+		File target = new File("C:\\Users\\HP\\eclipse-workspace\\TakeScrnshot7\\image\\" + name + ".png");
+		FileUtils.copyFile(temp, target);
+	}
+
+	public static void jsPassValue(WebElement ele, String data) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguements[0].setAttribute('value','" + data + "')", ele);
+
+	}
+
+	public static void jsClick(WebElement ele) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguements[0].click()", ele);
+
+	}
+
+	public static void jsScrollIntoTop(WebElement ele) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].scrollIntoView(True)", ele);
+
+	}
+
+	public static void jsScrollIntoBottom(WebElement ele) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].scrollIntoView(False)", ele);
+
+	}
+
+	//Frames
+	public static void switchFrameByEle(WebElement ele) {
+		driver.switchTo().frame(ele);
+
+	}
+
+	public static void switchFrameByNmae(String nameorId) {
+		driver.switchTo().frame(nameorId);
+
+	}
+
+	public static void switchFrameByIndex(int index) {
+		driver.switchTo().frame(index);
+
+	}
+
+	public static void switchFrameToParent() {
+		driver.switchTo().parentFrame();
+
+	}
+
+	public static void switchToMainFrame() {
+		driver.switchTo().defaultContent();
+
+	}
+
+	//WindowHandling
+	public static void parentWindowId() {
+		driver.getWindowHandle();
+	}
+
+	public static void switchWindow(int index) {
+		Set<String> allWindowHandles = driver.getWindowHandles();
+		List<String> l = new ArrayList<String>();
+		driver.switchTo().window(l.get(index));
+
+	}
+
+	public static void switchWindowByUrl(String url) {
+		driver.switchTo().window(url);
+	}
+
+	public static void switchWindowByTitle(String Title) {
+		driver.switchTo().window(Title);
+	}
+
+	//DropDown
+	public static void selectByIndex(WebElement ele, int index) {
+		Select s = new Select(ele);
+		s.selectByIndex(index);
+	}
+
+	public static void deselectByIndex(WebElement ele, int index) {
+		Select s = new Select(ele);
+		s.deselectByIndex(index);
+	}
+
+	public static void selectByValue(WebElement ele, String value) {
+		Select s = new Select(ele);
+		s.selectByValue(value);
+	}
+
+	public static void deselectByValue(WebElement ele, String value) {
+		Select s = new Select(ele);
+		s.deselectByValue(value);
+	}
+
+	public static void selectByText(WebElement ele, String text) {
+		Select s = new Select(ele);
+		s.selectByVisibleText(text);
+
+	}
+
+	public static void deselectByText(WebElement ele, String text) {
+		Select s = new Select(ele);
+		s.deselectByVisibleText(text);
+
+	}
+
+	public static void isMultiple(WebElement ele) {
+		Select s = new Select(ele);
+		boolean multiple = s.isMultiple();
+		System.out.println(multiple);
+
+	}
+
+	public static void getOneOptionByIndex(WebElement ele, int index) {
+		Select s = new Select(ele);
+		List<WebElement> allSelectedOptions = s.getAllSelectedOptions();
+		allSelectedOptions.get(index).getText();
+
+	}
+
+	public static void getAllOptions(WebElement ele) {
+		Select s = new Select(ele);
+		List<WebElement> allOptions = s.getOptions();
+		for (int i = 1; i < allOptions.size(); i++) {
+			String text = allOptions.get(i).getText();
+			System.out.println(text);
+		}
+	}
+
+	public static void printAllAttribute(WebElement ele1) {
+		Select s = new Select(ele1);
+		List<WebElement> ele2 = s.getOptions();
+
+		for (WebElement ele3 : ele2) {
+			System.out.println(ele3.getAttribute("value"));
+
+		}
+	}
+
+	public static void printOneAttribute(WebElement ele1) {
+		Select s = new Select(ele1);
+		List<WebElement> ele2 = s.getOptions();
+		System.out.println(ele1.getAttribute("value"));
+
+	}
+
+	//Waits
+	public static void implicitWait(int seconds) {
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(seconds));
+
+	}
+
+	public static void webDriverWait(int seconds) {
+		WebDriverWait w = new WebDriverWait(driver, Duration.ofSeconds(seconds));
+	}
+
+	public static void fluentWait(Duration timeout, Duration time) {
+		FluentWait<WebDriver> f = new FluentWait<WebDriver>(driver);
+		f.withTimeout(timeout).pollingEvery(time).ignoring(Throwable.class);
+	}
+
+}
