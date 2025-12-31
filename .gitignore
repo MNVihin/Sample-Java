@@ -1,10 +1,17 @@
-# Eclipse files
+# Ignore desktop & junk files
+*.lnk
+*.txt
+*.docx
+*.xlsx
+*.zip
+desktop.ini
+
+# Eclipse specific
 .classpath
 .project
 .settings/
-
-# Compiled files
 bin/
 
-# Logs & temp
-*.log
+# OS files
+Thumbs.db
+.DS_Store
