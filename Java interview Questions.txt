@@ -1,0 +1,91 @@
+*Array to ArrayList conversion asList ,,,,,,,,, list to array conversion
+*Single dimensional array and two dimensional array 
+*ParseInt or valueOf
+*datatypes converstion
+*Autoboxing vs unboxing
+*Switchcase
+reverse method in string
+*Collections class methods
+*array--fixed stataic elements vs Arrays Class methods
+*predefined classes in java
+*Mutable vs immutable	
+*Immutable  classes in java
+*String pool or String constant pool--literal
+*Post increament vs pre increament
+*String, String buffer, string builder
+*Final, finally, finalize 
+*what is packages in java--Used to group related class and interfaces and write a better maintainable code
+*Runtime and compile time exception
+*Null pointer exception 
+*System.in, System.out, System.error system.exit(0)
+*Diff between for and for each loop
+*Types of constructor
+*Private constructor
+
+*Print
+-------------
+This function prints the specified output to the console without adding a new line
+
+, println
+-----------------
+
+This function prints the specified output to the console with adding a new line
+
+ printf
+----------------
+This function allows for formatted output using format specifiers.
+
+Common format specifiers include %s for strings, %d for integers, %f
++
+
+*Iterator vs listierator:
+--------------------------------
+
+
+Iterator:
+Scope: General-purpose iterator for all Collection types, including List, Set, and Queue.
+Traversal: Unidirectional (forward only) using hasNext() and next().
+Modification: Supports removal of the last element returned by next() using remove(). It does not support adding or modifying elements directly.
+
+
+ListIterator:
+Scope: Specific to List implementations (e.g., ArrayList, LinkedList).
+Traversal: Bidirectional (forward and backward) using hasNext(), next(), hasPrevious(), and previous().
+
+Modification: Supports removal of the last element returned by next() or previous() using remove(). Additionally, it allows modification of the last element returned using set(E e) and insertion of new elements at the current cursor position using add(E e).
+
+
+*Comparable 
+-----------------
+Natural order sorting
+
+It is used for a single sorting order.
+
+
+
+vs comparator interface:
+--------------------------
+
+Custom order sorting
+
+It is used for multiple sorting orders.
+
+
+
+
+*Operators:
+----------------
+
+JDK 4 vs JDK5 diference
+*can we overload main method
+*can we override main method
+*if we exchange the words in main method will the main method work?
+*Explain main method
+*Can we overload a constructor
+*Can we override a constructor
+*Can we overload static method
+*Can we override a static method
+*ArrayList vs LinkedList
+*ArrayList vs vector
+*HashMap vs Hashtable
+*Sop explanation
